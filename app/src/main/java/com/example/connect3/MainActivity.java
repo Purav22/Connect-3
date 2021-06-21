@@ -2,13 +2,17 @@ package com.example.connect3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
     int[][] winningPositions = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}, {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, {0, 4, 8}, {2, 4, 6}};
     int activePlayer = 0; // 0 == tom 1 == jerry
     boolean gameActive = true;
+    @SuppressLint("SetTextI18n")
     public void dropIn(View view) {
 
         ImageView counter = (ImageView) view;
-
 
         int tappedCounter = Integer.parseInt(counter.getTag().toString());
         if(gameState[tappedCounter] == 2 && gameActive) {
@@ -56,10 +60,12 @@ public class MainActivity extends AppCompatActivity {
                     Button playAgain = (Button) findViewById(R.id.playAgainButton);
                     TextView winnerText = (TextView) findViewById(R.id.winnerTextView);
 
-                    winnerText.setText(winner + "has won!");
+                    winnerText.setText(winner + " has won!");
 
                     playAgain.setVisibility(View.VISIBLE);
                     winnerText.setVisibility(View.VISIBLE);
+
+
 
                 }
             }
@@ -67,11 +73,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void playAgain(View view){
+
         Button playAgain = (Button) findViewById(R.id.playAgainButton);
         TextView winnerText = (TextView) findViewById(R.id.winnerTextView);
 
         playAgain.setVisibility(View.INVISIBLE);
         winnerText.setVisibility(View.INVISIBLE);
+
+        GridLayout gridLayout = (GridLayout) findViewById(R.id.gridLayout);
+
+        for(int i = 0; i < gridLayout.getChildCount(); i++){
+            ImageView ct = (ImageView) gridLayout.getChildAt(i);
+
+            ct.setImageDrawable(null);
+        }
+
+        Arrays.fill(gameState, 2);
+
+        activePlayer = 0;
+        gameActive = true;
     }
 
 

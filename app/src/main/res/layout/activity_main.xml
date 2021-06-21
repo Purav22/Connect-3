@@ -6,20 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.gridlayout.widget.GridLayout
+    <GridLayout
         android:id="@+id/gridLayout"
         android:layout_width="368dp"
         android:layout_height="368dp"
         android:layout_margin="10dp"
         android:background="@drawable/board"
-        app:columnCount="3"
+        android:columnCount="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.498"
-        app:rowCount="3">
+        android:rowCount="3">
 
         <ImageView
             android:id="@+id/imageView1"
@@ -105,7 +105,7 @@
             android:tag="8"
             />
 
-    </androidx.gridlayout.widget.GridLayout>
+    </GridLayout>
 
     <TextView
         android:id="@+id/winnerTextView"
@@ -115,7 +115,7 @@
         android:layout_marginTop="70dp"
         android:layout_marginEnd="150dp"
         android:layout_marginBottom="70dp"
-        android:text="TextView"
+        android:text=""
         app:layout_constraintBottom_toTopOf="@+id/gridLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -131,14 +131,15 @@
         android:layout_marginEnd="150dp"
         android:layout_marginBottom="60dp"
         android:onClick="playAgain"
+        android:visibility="invisible"
         android:text="Replay"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gridLayout"
-        app:layout_constraintVertical_bias="0.071"
-        tools:visibility="invisible" />
+        app:layout_constraintVertical_bias="0.214"
+        tools:ignore="UsingOnClickInXml" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
